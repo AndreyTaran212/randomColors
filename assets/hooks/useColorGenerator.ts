@@ -34,7 +34,7 @@ const useColorGenerator = () => {
     }
   }, []);
 
-  return {changeColor, changeColorType, bg};
+  return {changeColor, changeColorType, bg, bgType};
 };
 
 export default useColorGenerator;

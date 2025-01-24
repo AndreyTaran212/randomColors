@@ -8,9 +8,10 @@ import {
 } from 'react-native';
 import useColorGenerator from '@/assets/hooks/useColorGenerator';
 import {useState} from 'react';
+import {StyledButton} from '@/components/StyledButton';
 
 export default function HomeScreen() {
-  const {changeColor, changeColorType, bg} = useColorGenerator();
+  const {changeColor, changeColorType, bg, bgType} = useColorGenerator();
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
   return (
     <SafeAreaView style={{backgroundColor: bg}}>
@@ -26,30 +27,36 @@ export default function HomeScreen() {
         {showAppOptions ? (
           <View style={styles.optionsContainer}>
             <View style={styles.optionsRow}>
-              <TouchableOpacity
+              <StyledButton
+                selectedColorType={bgType}
                 style={styles.optionsItem}
+                type={'hex'}
                 onPress={() => {
                   changeColorType('hex');
                   setShowAppOptions(false);
                 }}>
                 <Text>hex</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
+              </StyledButton>
+              <StyledButton
+                selectedColorType={bgType}
+                type={'rgb'}
                 style={styles.optionsItem}
                 onPress={() => {
                   changeColorType('rgb');
                   setShowAppOptions(false);
                 }}>
                 <Text>rgb</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
+              </StyledButton>
+              <StyledButton
+                selectedColorType={bgType}
+                type="hsl"
                 style={styles.optionsItem}
                 onPress={() => {
                   changeColorType('hsl');
                   setShowAppOptions(false);
                 }}>
                 <Text>hsl</Text>
-              </TouchableOpacity>
+              </StyledButton>
             </View>
           </View>
         ) : (
